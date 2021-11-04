@@ -16,6 +16,8 @@ const Weather = () => {
   const [latitude, setLatidude] = useState("");
   const [longitude, setLongitude] = useState("");
 
+  console.log(weatherData)
+
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {

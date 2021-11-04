@@ -1,6 +1,6 @@
 import Geocode from "react-geocode";
 
-Geocode.setApiKey(process.env.REACT_APP_GEOAPI);
+// Geocode.setApiKey(process.env.REACT_APP_GEOAPI);
 
 export const getLocalInformation = async (
   lat,

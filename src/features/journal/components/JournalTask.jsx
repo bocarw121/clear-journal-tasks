@@ -1,8 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import {
-  completedTask,
-  deleteTask,
   toggleCompletedTask,
 } from "../journalSlice";
 import Confetti from "react-dom-confetti";
@@ -26,7 +24,6 @@ const JournalTask = ({
           aria-label='remove task'
           key='remove'
           onClick={() => {
-            dispatch(deleteTask(id));
             setTaskDeleted(!taskDeleted);
           }}
         >
@@ -40,7 +37,7 @@ const JournalTask = ({
           key='complete'
           onClick={() => {
             dispatch(toggleCompletedTask(id));
-            dispatch(completedTask(id));
+        
           }}
         >
           {isComplete ? "Redo" : "Done"}

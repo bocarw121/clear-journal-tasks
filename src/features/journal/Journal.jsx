@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import JournalTaskList from "./components/JournalTaskList.jsx";
-import { journalSelector, fetchTasks, createTask } from "./journalSlice";
+import { journalSelector,  } from "./journalSlice";
 
 import TextBox from "./components/TextBox.jsx";
 
@@ -15,13 +15,14 @@ const Journal = () => {
   const [taskCreated, setTaskCreated] = useState(isTaskCreated);
   const [taskDeleted, setTaskDeleted] = useState(isTaskDeleted);
 
-  useEffect(() => dispatch(fetchTasks()), [dispatch, taskCreated, taskDeleted]);
+  useEffect(() => {
+
+  }, [dispatch, taskCreated, taskDeleted])
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (newTask === "") return null;
-    dispatch(createTask(newTask));
     setNewTask("");
     setTaskCreated(!taskCreated);
   };
