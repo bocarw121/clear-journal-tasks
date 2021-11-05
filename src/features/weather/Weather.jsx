@@ -16,11 +16,13 @@ const Weather = () => {
   const [latitude, setLatidude] = useState("");
   const [longitude, setLongitude] = useState("");
 
-  console.log(weatherData)
+
 
   useEffect(() => {
+    
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
+       
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         const coordinates = [latitude, longitude];
@@ -35,14 +37,14 @@ const Weather = () => {
         state and country using Geocode which are then set into local 
         state variables */
         getLocalInformation(latitude, longitude, setCity, setState, setCountry);
-
         dispatch(fetchWeather(coordinates));
+      }, (err) => {
+        console.error(err)
       });
     } else {
       console.log("Could not get location");
     }
   }, [dispatch, city, country]);
-
   return (
     <div className='weather-wrapper'>
       <WeatherInformation
