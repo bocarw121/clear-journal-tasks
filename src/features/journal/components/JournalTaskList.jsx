@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import JournalTask from "./JournalTask";
 import "../Journal.css";
+import { journalTaskContext } from "../journalTaskContext";
 
 const bgColors = [
   "rgb(240, 95, 95)",
@@ -11,12 +12,14 @@ const bgColors = [
 
 const getBgColors = (index) => bgColors[index % bgColors.length];
 
-const JournalTaskList = ({ tasks, setTaskDeleted, taskDeleted }) => {
+const JournalTaskList = () => {
+  const tasksCtx = useContext(journalTaskContext);
   return (
-    <div className='journal-list-container'>
-      <ul className='flex margin-adjust'>
-        {tasks.map(({ task, isComplete }, index) => {
+    <div className="journal-list-container">
+      <ul className="flex margin-adjust">
+        {tasksCtx.tasks.map(({ task, isComplete, id }, index) => {
           const taskLength = task.length;
+
           return (
             <li
               className={`task ${isComplete && "task-completed"}
@@ -25,9 +28,8 @@ const JournalTaskList = ({ tasks, setTaskDeleted, taskDeleted }) => {
               style={{ backgroundColor: getBgColors(index) }}
             >
               <JournalTask
-                setTaskDeleted={setTaskDeleted}
-                taskDeleted={taskDeleted}
-                id={index}
+                index={index}
+                id={id}
                 isComplete={isComplete}
                 taskLength={taskLength}
               >

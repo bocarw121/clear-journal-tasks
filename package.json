@@ -13,7 +13,8 @@
     "react-geocode": "^0.2.3",
     "react-loading": "^2.0.3",
     "react-redux": "^7.2.3",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

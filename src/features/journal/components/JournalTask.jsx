@@ -1,30 +1,19 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import {
-  toggleCompletedTask,
-} from "../journalSlice";
+import React, { useContext } from "react";
 import Confetti from "react-dom-confetti";
 import "../Journal.css";
+import { journalTaskContext } from "../journalTaskContext";
 
-const JournalTask = ({
-  children,
-  id,
-  isComplete,
-  setTaskDeleted,
-  taskDeleted,
-  taskLength,
-}) => {
-  const dispatch = useDispatch();
-
+const JournalTask = ({ children, index, id, taskLength, isComplete }) => {
+  const tasksCtx = useContext(journalTaskContext);
   return (
     <div>
-      <div className='action-btn-wrapper'>
+      <div className="action-btn-wrapper">
         <button
           className={`remove-task ${taskLength > 40 && "remove-task-adjust"}`}
-          aria-label='remove task'
-          key='remove'
+          aria-label="remove task"
+          key="remove"
           onClick={() => {
-            setTaskDeleted(!taskDeleted);
+            tasksCtx.removeTodo(id);
           }}
         >
           Remove
@@ -33,11 +22,11 @@ const JournalTask = ({
           className={`complete-task ${
             taskLength > 40 && "complete-task-adjust"
           }`}
-          aria-label='complete task'
-          key='complete'
+          aria-label="complete task"
+          key="complete"
           onClick={() => {
-            dispatch(toggleCompletedTask(id));
-        
+            // toggle complete
+            tasksCtx.toggleIsComplete(index);
           }}
         >
           {isComplete ? "Redo" : "Done"}
