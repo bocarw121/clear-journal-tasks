@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./App.css";
 import BackgroundImage from "./features/backgroundImage/BackgroundImage";
 import Weather from "./features/weather/Weather";

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import JournalTask from "./JournalTask";
 import "../Journal.css";
+import { journalTaskContext } from "../journalTaskContext";
 
 const bgColors = [
   "rgb(240, 95, 95)",
@@ -9,25 +11,48 @@ const bgColors = [
   "rgb(64, 70, 62)",
 ];
 
-const getBgColors = (index) => bgColors[index % bgColors.length];
+const bgColorsLowOpacity = [
+  "rgba(240, 95, 95, 0.3)",
+  "rgba(60, 71, 224, 0.3)",
+  "rgba(53, 151, 29, 0.3)",
+  "rgba(64, 70, 62, 0.3)",
+];
+/**
+ *  Returns background color with low opacity
+ *  for completed tasks and normal opacity for incomplete tasks
+ * @param  {number} index
+ * @param  {boolean} opacity=false
+ */
+const getBgColors = (index, opacity = false) => {
+  if (opacity) {
+    return bgColorsLowOpacity[index];
+  } else {
+    return bgColors[index];
+  }
+};
 
-const JournalTaskList = ({ tasks, setTaskDeleted, taskDeleted }) => {
+const JournalTaskList = () => {
+  const tasksCtx = useContext(journalTaskContext);
+
   return (
-    <div className='journal-list-container'>
-      <ul className='flex margin-adjust'>
-        {tasks.map(({ task, isComplete }, index) => {
+    <div className="journal-list-container">
+      <ul className="flex margin-adjust">
+        {tasksCtx.tasks.map(({ task, isComplete, id }, index) => {
           const taskLength = task.length;
+
           return (
             <li
-              className={`task ${isComplete && "task-completed"}
-                ${taskLength > 40 && "height-adjust"}`}
+              className={`task ${taskLength > 40 && "height-adjust"}`}
               key={index}
-              style={{ backgroundColor: getBgColors(index) }}
+              style={{
+                backgroundColor: isComplete
+                  ? getBgColors(index, true)
+                  : getBgColors(index),
+              }}
             >
               <JournalTask
-                setTaskDeleted={setTaskDeleted}
-                taskDeleted={taskDeleted}
-                id={index}
+                index={index}
+                id={id}
                 isComplete={isComplete}
                 taskLength={taskLength}
               >

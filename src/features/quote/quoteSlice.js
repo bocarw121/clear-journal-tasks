@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import { fetchQuotesApi } from "../../api/quotes";
 
 export const fetchQuotes = createAsyncThunk("quote", fetchQuotesApi);

@@ -1,17 +1,35 @@
-import React from "react";
-import "../Journal.css";
+import React, { useContext, useRef } from "react";
 
-const TextBox = ({ newTask, onChange, onSubmit }) => {
+import "../Journal.css";
+import { journalTaskContext } from "../journalTaskContext";
+
+const TextBox = () => {
+  const tasksTextInput = useRef(null);
+
+  const tasksCtx = useContext(journalTaskContext);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newText = tasksTextInput.current.value;
+
+    if (newText.trim().length === 0) {
+      return;
+    }
+
+    tasksCtx.addTodo(newText);
+    tasksTextInput.current.value = null;
+  };
+
   return (
-    <div className='text-box'>
-      <h2 className='text-box-title'>Whats on your mind Today?</h2>
-      <form onSubmit={onSubmit}>
+    <div className="text-box">
+      <h2 className="text-box-title">Whats on your mind for today?</h2>
+      <form onSubmit={handleSubmit}>
         <input
-          maxLength='50'
-          className='journal-text'
-          type='text'
-          value={newTask}
-          onChange={onChange}
+          maxLength="50"
+          className="journal-text"
+          type="text"
+          placeholder="Enter your task"
+          ref={tasksTextInput}
         />
       </form>
     </div>

@@ -1,6 +1,6 @@
 .journal-wrapper {
   margin-top: 120px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: hsl(198, 29%, 93%);
   min-width: 100%;
 }
@@ -26,7 +26,7 @@
   z-index: 10;
 }
 
-input[type='text'] {
+input[type="text"] {
   text-align: center;
   border: 0;
   outline: 0;
@@ -130,7 +130,7 @@ input[type='text'] {
 }
 
 .remove-task {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
   outline: 0;
   position: fixed;
@@ -150,7 +150,7 @@ input[type='text'] {
 }
 
 .complete-task {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
   outline: 0;
   position: fixed;
@@ -167,10 +167,6 @@ input[type='text'] {
 
 .complete:hover {
   opacity: 1;
-}
-
-.task-completed {
-  opacity: 0.2;
 }
 
 /* Adjustments for tasks with length greater than 40 */

@@ -7,7 +7,7 @@
   align-items: center;
   flex-wrap: wrap;
   position: relative;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 .quote-loading {
   width: 50%;

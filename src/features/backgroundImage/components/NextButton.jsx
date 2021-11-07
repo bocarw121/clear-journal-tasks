@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+
 import "../BackgroundImage.css";
 import { nextImagePosition } from "../backgroundImageSlice";
 
@@ -9,9 +10,9 @@ const NextButton = () => {
   return (
     <button
       onClick={() => dispatch(nextImagePosition())}
-      className='button next'
+      className="button next"
     >
-      >
+      {">"}
     </button>
   );
 };

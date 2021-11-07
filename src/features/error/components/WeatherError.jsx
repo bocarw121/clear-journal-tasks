@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+
 import { clearWeatherErrorMessage } from "../errorSlice";
 import { fetchWeather } from "../../weather/weatherSlice";
 
@@ -16,7 +17,7 @@ const WeatherError = ({ latitude, longitude }) => {
           dispatch(fetchWeather([latitude, longitude]));
           dispatch(clearWeatherErrorMessage());
         }}
-        className='refresh-button'
+        className="refresh-button"
       >
         Refresh
       </button>
