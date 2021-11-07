@@ -9,7 +9,7 @@ const PreviousButton = () => {
   return (
     <button
       onClick={() => dispatch(previousImagePosition())}
-      className='button previous'
+      className="button previous"
     >
       {"<"}
     </button>

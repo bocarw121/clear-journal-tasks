@@ -5,7 +5,7 @@
 ### Table of Contents
 
 - [Welcome to Clear Weather Journal](#welcome-to-clear-weather-journal)
-    - [Table of Contents](#table-of-contents)
+  - [Table of Contents](#table-of-contents)
   - [General info](#general-info)
   - [Technologies](#technologies)
   - [Setup](#setup)

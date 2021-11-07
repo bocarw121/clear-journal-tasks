@@ -11,7 +11,9 @@ function App() {
   return (
     <div>
       <BackgroundImage>
-        <header>{/* <Weather /> */}</header>
+        <header>
+          <Weather />
+        </header>
         <main>
           <aside>
             <PreviousButton />

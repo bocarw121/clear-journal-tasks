@@ -13,7 +13,7 @@ const QuoteError = () => {
           dispatch(fetchQuotes());
           dispatch(clearQuoteErrorMessage());
         }}
-        className='refresh-button'
+        className="refresh-button"
       >
         Refresh
       </button>

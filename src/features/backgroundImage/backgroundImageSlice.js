@@ -44,9 +44,7 @@ const backgroundImageSlice = createSlice({
 
 export const backgroundImageSelector = (state) => state.backgroundImage;
 
-export const {
-  nextImagePosition,
-  previousImagePosition,
-} = backgroundImageSlice.actions;
+export const { nextImagePosition, previousImagePosition } =
+  backgroundImageSlice.actions;
 
 export default backgroundImageSlice.reducer;

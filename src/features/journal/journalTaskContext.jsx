@@ -53,6 +53,7 @@ const JournalTaskContextProvider = ({ children }) => {
   };
 
   return (
+    // eslint-disable-next-line react/react-in-jsx-scope
     <journalTaskContext.Provider value={contextValues}>
       {children}
     </journalTaskContext.Provider>

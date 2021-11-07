@@ -16,7 +16,7 @@ const WeatherError = ({ latitude, longitude }) => {
           dispatch(fetchWeather([latitude, longitude]));
           dispatch(clearWeatherErrorMessage());
         }}
-        className='refresh-button'
+        className="refresh-button"
       >
         Refresh
       </button>

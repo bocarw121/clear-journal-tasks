@@ -20,7 +20,7 @@ const WeatherInformation = ({
 
   const [temp, feelsLike, icon, description] = weatherData;
 
-  if (errorMessages.weather)
+  if (errorMessages.weather) {
     return (
       <Error
         weather={"weather-Error"}
@@ -28,29 +28,31 @@ const WeatherInformation = ({
         longitude={longitude}
       />
     );
+  }
 
-  if (isLoading || !temp)
+  if (isLoading || !temp) {
     return (
-      <div className='weather-loading'>
-        <Loading type='cylon' color='blue' height={"50px"} width={"60px"} />
+      <div className="weather-loading">
+        <Loading type="cylon" color="blue" height={"50px"} width={"60px"} />
       </div>
     );
+  }
   return (
     <div>
       {city ? (
-        <p className='location'>
+        <p className="location">
           {city}, {state}
         </p>
       ) : null}
-      <div className='weather-information'>
+      <div className="weather-information">
         <div>
-          <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt='' />
+          <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="" />
         </div>
-        <div className='temperature-and-description'>
+        <div className="temperature-and-description">
           {country === "United States" ? (
-            <p className='temp'>{convertToFahrenheight(temp)}°F</p>
+            <p className="temp">{convertToFahrenheight(temp)}°F</p>
           ) : (
-            <p className='temp'>{Math.round(temp)}°C</p>
+            <p className="temp">{Math.round(temp)}°C</p>
           )}
           <p>{description}</p>
         </div>

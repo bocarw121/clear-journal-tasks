@@ -4,9 +4,13 @@ import { weatherSelector, fetchWeather } from "./weatherSlice";
 import { getLocalInformation } from "../../api/apiUtil/geocode";
 import WeatherInformation from "./components/WeatherInformation";
 import "./Weather.css";
+import { getWithExpiry } from "../../utils/sessionExpiry";
 
 const Weather = () => {
   const { weatherData, isLoading } = useSelector(weatherSelector);
+
+  const localWeatherData = getWithExpiry("weatherData");
+  const localGeoData = JSON.parse(localStorage.getItem("geoData"));
 
   const dispatch = useDispatch();
 
@@ -33,30 +37,40 @@ const Weather = () => {
           /*  Takes in the coordinates and 3 setters and returns the city, 
         state and country using Geocode which are then set into local 
         state variables */
-          getLocalInformation(
-            latitude,
-            longitude,
-            setCity,
-            setState,
-            setCountry
-          );
-          dispatch(fetchWeather(coordinates));
+
+          if (!localGeoData) {
+            getLocalInformation(
+              latitude,
+              longitude,
+              setCity,
+              setState,
+              setCountry
+            );
+          }
+
+          // if (weatherData && latitude && longitude) {
+          if (!localWeatherData) {
+            dispatch(fetchWeather(coordinates));
+          }
+
+          // }
         },
         (err) => {
           console.error(err);
         }
       );
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      console.error("Geolocation is not supported by this browser.");
     }
-  }, [dispatch, city, country]);
+  }, []);
+
   return (
     <div className="weather-wrapper">
       <WeatherInformation
-        weatherData={weatherData}
-        city={city}
-        state={state}
-        country={country}
+        weatherData={localWeatherData || weatherData}
+        city={localGeoData?.city || city}
+        state={localGeoData?.state || state}
+        country={localGeoData?.country || country}
         isLoading={isLoading}
         latitude={latitude}
         longitude={longitude}

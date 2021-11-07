@@ -31,7 +31,11 @@ const JournalTask = ({ children, index, id, taskLength, isComplete }) => {
           {isComplete ? "Redo" : "Done"}
           <Confetti
             active={isComplete}
-            config={{ spread: 90, width: "15px", elementCount: 100 }}
+            config={{
+              spread: 90,
+              width: "15px",
+              elementCount: 100,
+            }}
           />
         </button>
       </div>

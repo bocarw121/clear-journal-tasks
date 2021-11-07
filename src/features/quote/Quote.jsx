@@ -15,21 +15,24 @@ const Quote = () => {
 
   useEffect(() => dispatch(fetchQuotes()), [dispatch]);
 
-  if (errorMessages.quote) return <Error quote='quote-error' />;
-  if (isLoading || !quote)
+  if (errorMessages.quote) {
+    return <Error quote="quote-error" />;
+  }
+  if (isLoading || !quote) {
     return (
-      <div className='quote-loading'>
+      <div className="quote-loading">
         <Loading
-          type='cylon'
-          color='#221f1f'
+          type="cylon"
+          color="#221f1f"
           height={"100px"}
           width={"100px"}
         />
       </div>
     );
+  }
   return (
-    <div className='quote'>
-      <div className='scrim'>
+    <div className="quote">
+      <div className="scrim">
         <blockquote>{quote}</blockquote>
         <cite>
           <span>-{author}</span>

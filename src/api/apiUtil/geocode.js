@@ -2,7 +2,8 @@ import Geocode from "react-geocode";
 
 Geocode.setApiKey(process.env.REACT_APP_GEOAPI);
 
-const cache = {};
+const storage = localStorage;
+const cache = JSON.parse(storage.getItem("geoData"));
 export const getLocalInformation = async (
   lat,
   lon,
@@ -11,8 +12,8 @@ export const getLocalInformation = async (
   setCountry
 ) => {
   try {
-    if (cache[lat + lon]) {
-      const { city, state, country } = cache[lat + lon];
+    if (cache) {
+      const { city, state, country } = cache;
       setCity(city);
       setState(state);
       setCountry(country);
@@ -24,13 +25,13 @@ export const getLocalInformation = async (
       const state = data.results[0].address_components[5].long_name;
       const country = data.results[0].address_components[6].long_name;
 
-      cache[lat + lon] = { city, state, country };
+      storage.setItem("geoData", JSON.stringify({ city, state, country }));
 
       setCity(city);
       setState(state);
       setCountry(country);
     }
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 };

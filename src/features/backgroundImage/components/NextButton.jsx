@@ -9,9 +9,9 @@ const NextButton = () => {
   return (
     <button
       onClick={() => dispatch(nextImagePosition())}
-      className='button next'
+      className="button next"
     >
-      >
+      {">"}
     </button>
   );
 };
