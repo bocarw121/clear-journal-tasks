@@ -15,7 +15,7 @@
 
 ## General info
 
-A cool relaxing website where you can add your tasks for the day, view the current weather in your area and get inspired by a daily quote.
+A cool relaxing app where you can add your tasks for the day, view the current weather in your area and get inspired by a daily quote.
 
 ---
 
