@@ -7,9 +7,13 @@ const storage = localStorage;
 
 const JournalTaskContextProvider = ({ children }) => {
   const storedTasks = storage.getItem("tasks");
-  const [tasks, setTasks] = useState(() => {
-    return JSON.parse(storedTasks) || [];
-  });
+  const [taskComplete, setTaskComplete] = useState(false);
+  const [tasks, setTasks] = useState(JSON.parse(storedTasks) || []);
+
+  useEffect(() => {
+    storage.setItem("tasks", JSON.stringify(tasks));
+    setTaskComplete(false);
+  }, [tasks, taskComplete]);
 
   const addTodo = (task) => {
     const newTodo = {
@@ -35,8 +39,8 @@ const JournalTaskContextProvider = ({ children }) => {
   const toggleIsComplete = (id) => {
     setTasks((prevTask) => {
       prevTask[id].isComplete = !prevTask[id].isComplete;
-      storage.setItem("tasks", JSON.stringify(tasks));
 
+      setTaskComplete(!taskComplete);
       return prevTask;
     });
   };

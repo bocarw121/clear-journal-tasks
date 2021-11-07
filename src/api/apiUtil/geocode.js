@@ -12,7 +12,6 @@ export const getLocalInformation = async (
 ) => {
   try {
     if (cache[lat + lon]) {
-      console.log("from cache");
       const { city, state, country } = cache[lat + lon];
       setCity(city);
       setState(state);

@@ -25,7 +25,6 @@ const JournalTask = ({ children, index, id, taskLength, isComplete }) => {
           aria-label="complete task"
           key="complete"
           onClick={() => {
-            // toggle complete
             tasksCtx.toggleIsComplete(index);
           }}
         >

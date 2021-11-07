@@ -16,37 +16,42 @@ const Weather = () => {
   const [latitude, setLatidude] = useState("");
   const [longitude, setLongitude] = useState("");
 
-
-
   useEffect(() => {
-    
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-       
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        const coordinates = [latitude, longitude];
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          const coordinates = [latitude, longitude];
 
-        /* Set latitude and longitude to pass as props to the Error Component
+          /* Set latitude and longitude to pass as props to the Error Component
            to use in the WeatherError component to re-dispatch fetchWeather.
         */
-        setLatidude(latitude);
-        setLongitude(longitude);
+          setLatidude(latitude);
+          setLongitude(longitude);
 
-        /*  Takes in the coordinates and 3 setters and returns the city, 
+          /*  Takes in the coordinates and 3 setters and returns the city, 
         state and country using Geocode which are then set into local 
         state variables */
-        getLocalInformation(latitude, longitude, setCity, setState, setCountry);
-        dispatch(fetchWeather(coordinates));
-      }, (err) => {
-        console.error(err)
-      });
+          getLocalInformation(
+            latitude,
+            longitude,
+            setCity,
+            setState,
+            setCountry
+          );
+          dispatch(fetchWeather(coordinates));
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
     } else {
-      console.log("Could not get location");
+      console.log("Geolocation is not supported by this browser.");
     }
   }, [dispatch, city, country]);
   return (
-    <div className='weather-wrapper'>
+    <div className="weather-wrapper">
       <WeatherInformation
         weatherData={weatherData}
         city={city}
