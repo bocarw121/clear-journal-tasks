@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import { weatherSelector, fetchWeather } from "./weatherSlice";
 import { getLocalInformation } from "../../api/apiUtil/geocode";
 import WeatherInformation from "./components/WeatherInformation";

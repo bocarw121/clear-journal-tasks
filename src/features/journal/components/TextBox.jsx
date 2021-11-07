@@ -1,4 +1,5 @@
 import React, { useContext, useRef } from "react";
+
 import "../Journal.css";
 import { journalTaskContext } from "../journalTaskContext";
 
@@ -21,12 +22,13 @@ const TextBox = () => {
 
   return (
     <div className="text-box">
-      <h2 className="text-box-title">Whats on your mind Today?</h2>
+      <h2 className="text-box-title">Whats on your mind for today?</h2>
       <form onSubmit={handleSubmit}>
         <input
           maxLength="50"
           className="journal-text"
           type="text"
+          placeholder="Enter your task"
           ref={tasksTextInput}
         />
       </form>

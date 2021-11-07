@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { fetchBackgroundImages } from "../backgroundImage/backgroundImageSlice";
 import { fetchQuotes } from "../quote/quoteSlice";
 import { fetchWeather } from "../weather/weatherSlice";

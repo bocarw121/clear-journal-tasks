@@ -169,10 +169,6 @@ input[type="text"] {
   opacity: 1;
 }
 
-.task-completed {
-  opacity: 0.2;
-}
-
 /* Adjustments for tasks with length greater than 40 */
 
 .height-adjust {

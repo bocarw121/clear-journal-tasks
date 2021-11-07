@@ -1,6 +1,6 @@
 import React from "react";
-import JournalTaskList from "./components/JournalTaskList.jsx";
 
+import JournalTaskList from "./components/JournalTaskList.jsx";
 import TextBox from "./components/TextBox.jsx";
 import JournalTaskContextProvider from "./journalTaskContext.jsx";
 

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Confetti from "react-dom-confetti";
+
 import "../Journal.css";
 import { journalTaskContext } from "../journalTaskContext";
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+
 import { clearWeatherErrorMessage } from "../errorSlice";
 import { fetchWeather } from "../../weather/weatherSlice";
 
