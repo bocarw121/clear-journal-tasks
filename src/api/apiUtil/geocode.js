@@ -1,9 +1,6 @@
-import Geocode from "react-geocode";
-
-Geocode.setApiKey(process.env.REACT_APP_GEOAPI);
-
 const storage = localStorage;
 const cache = JSON.parse(storage.getItem("geoData"));
+
 export const getLocalInformation = async (
   lat,
   lon,
@@ -11,20 +8,28 @@ export const getLocalInformation = async (
   setState,
   setCountry
 ) => {
+  const { REACT_APP_OPENCAGE_API_KEY } = process.env;
   try {
     if (cache) {
       const { city, state, country } = cache;
+
+      // Sets state for city, state, and country
       setCity(city);
       setState(state);
       setCountry(country);
     } else {
-      const response = await Geocode.fromLatLng(lat, lon);
+      const response = await fetch(
+        `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${REACT_APP_OPENCAGE_API_KEY}`
+      );
 
-      const data = await response;
-      const city = data.results[0].address_components[2].long_name;
-      const state = data.results[0].address_components[5].long_name;
-      const country = data.results[0].address_components[6].long_name;
+      if (!response.ok) {
+        throw new Error(`${res.status} ${res.statusText}`);
+      }
 
+      const data = await response.json();
+      const { city, country, state } = data.results[0].components;
+
+      // Sets the geodata for city, state, and country in cache
       storage.setItem("geoData", JSON.stringify({ city, state, country }));
 
       setCity(city);

@@ -41,6 +41,10 @@ input[type="text"] {
   display: block;
 }
 
+input::placeholder {
+  color: rgba(255, 255, 255, 0.452);
+}
+
 @media screen and (max-width: 618px) {
   .text-box {
     width: 90%;
