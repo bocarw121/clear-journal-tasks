@@ -1,0 +1,66 @@
+.weather-Error {
+  padding: 30px;
+}
+
+.weather-Error p {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 5px;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.bg-image-error {
+  height: 100vh;
+  width: 100vw;
+  border: 1px solid;
+  background-color: hsl(208, 55%, 53%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.bg-image-error p {
+  padding: 20px 0;
+  color: hsl(0, 0%, 100%);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(2.3rem, 1.9718rem + 1.0563vw, 3rem);
+  font-weight: 900;
+}
+
+.quote-error {
+  width: 50%;
+  margin: 10rem auto 6rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: hsl(204, 2%, 52%);
+  opacity: 0.7;
+  box-shadow: 0 0 5rem hsl(240, 100%, 0%);
+  text-align: center;
+}
+
+.quote-error p {
+  font-weight: 900;
+  font-size: 2rem;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.refresh-button {
+  padding: 5px;
+  border-radius: 5px;
+  outline: 0;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  font-weight: 700;
+  color: hsl(0, 15%, 84%);
+}
+
+.refresh-button:hover {
+  color: hsl(0, 2%, 12%);
+}

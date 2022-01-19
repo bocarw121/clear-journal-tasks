@@ -1,0 +1,54 @@
+.quote {
+  width: 80%;
+  margin: 4rem auto 4rem;
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  font-family: 'Lato', sans-serif;
+}
+.quote-loading {
+  width: 50%;
+  margin: 10rem auto 6rem;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 0 5rem hsl(240, 100%, 0%);
+  font-size: 1.8rem;
+}
+
+.scrim {
+  height: fit-content;
+  width: fit-content;
+  background-color: hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 0 5rem hsl(240, 100%, 0%);
+}
+
+.quote blockquote {
+  font-size: clamp(1.9rem, 2.2721rem + -0.2459vw, 2.1rem);
+  color: hsl(0, 9%, 98%);
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.quote cite span {
+  font-size: clamp(2rem, 2.2721rem + -0.2459vw, 2.4rem);
+  display: block;
+  color: hsl(0, 15%, 92%);
+  font-weight: 900;
+  padding: 2px 0 20px 48px;
+}
+
+@media screen and (max-width: 800px) {
+  .quote {
+    width: 90%;
+  }
+  .scrim {
+    width: 100%;
+  }
+}

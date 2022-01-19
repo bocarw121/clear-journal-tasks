@@ -1,0 +1,21 @@
+header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+}
+
+aside {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 618px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
