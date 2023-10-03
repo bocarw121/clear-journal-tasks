@@ -37,11 +37,9 @@ const bgColorsLowOpacity = [
  */
 const getBgColors = (index, opacity = false) => {
   if (opacity) {
-    const val = bgColorsLowOpacity[index];
+    return bgColorsLowOpacity[index % bgColorsLowOpacity.length];
   } else {
-    const val = bgColors[index];
-    console.log(val);
-    return val;
+    return bgColors[index % bgColors.length];
   }
 };
 
