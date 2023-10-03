@@ -18,7 +18,9 @@ const BackgroundImage = ({ children }) => {
   const { errorMessages } = useSelector(errorSelector);
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(fetchBackgroundImages()), [dispatch]);
+  useEffect(() => {
+    dispatch(fetchBackgroundImages());
+  }, [dispatch]);
 
   if (errorMessages.bgImage) {
     return <Error bgImage="bg-image-error" />;

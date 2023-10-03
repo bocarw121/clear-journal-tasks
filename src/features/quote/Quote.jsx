@@ -14,7 +14,9 @@ const Quote = () => {
   const [author, quote] = quotes;
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(fetchQuotes()), [dispatch]);
+  useEffect(() => {
+    dispatch(fetchQuotes());
+  }, [dispatch]);
 
   if (errorMessages.quote) {
     return <Error quote="quote-error" />;
