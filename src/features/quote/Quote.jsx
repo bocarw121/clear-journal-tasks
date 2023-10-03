@@ -1,28 +1,25 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 
-import { fetchQuotes, quoteSelector } from './quoteSlice';
-import { errorSelector } from '../error/errorSlice';
 import Loading from '../../components/Loading';
-import Error from '../error/Error';
 
 import './Quote.css';
+import { positiveQuotes } from '../../data/quotes';
 
 const Quote = () => {
-  const { quotes, isLoading } = useSelector(quoteSelector);
-  const { errorMessages } = useSelector(errorSelector);
-  const [author, quote] = quotes;
-  const dispatch = useDispatch();
+  const [quote, setQuote] = useState(null);
 
-  useEffect(() => {
-    dispatch(fetchQuotes());
-  }, [dispatch]);
+  function getRandomQuote() {
+    const quote =
+      positiveQuotes[Math.floor(Math.random() * positiveQuotes.length)];
 
-  if (errorMessages.quote) {
-    return <Error quote="quote-error" />;
+    return quote;
   }
 
-  if (isLoading || !quote) {
+  useEffect(() => {
+    setQuote(getRandomQuote());
+  }, []);
+
+  if (!quote) {
     return (
       <div className="quote-loading">
         <Loading
@@ -37,9 +34,9 @@ const Quote = () => {
   return (
     <div className="quote">
       <div className="scrim">
-        <blockquote>{quote}</blockquote>
+        <blockquote>{quote?.quote}</blockquote>
         <cite>
-          <span>-{author}</span>
+          <span>-{quote?.author}</span>
         </cite>
       </div>
     </div>
