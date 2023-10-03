@@ -8,7 +8,6 @@ export const getLocalInformation = async (
   setState,
   setCountry
 ) => {
-  const { REACT_APP_OPENCAGE_API_KEY } = process.env;
   try {
     if (cache) {
       const { city, state, country } = cache;
@@ -19,7 +18,12 @@ export const getLocalInformation = async (
       setCountry(country);
     } else {
       const response = await fetch(
-        `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${REACT_APP_OPENCAGE_API_KEY}`
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
+        {
+          headers: {
+            'User-Agent': 'Journal app',
+          },
+        }
       );
 
       if (!response.ok) {
@@ -27,7 +31,7 @@ export const getLocalInformation = async (
       }
 
       const data = await response.json();
-      const { city, country, state } = data.results[0].components;
+      const { city, country, state } = data.address;
 
       // Sets the geodata for city, state, and country in cache
       storage.setItem('geoData', JSON.stringify({ city, state, country }));
