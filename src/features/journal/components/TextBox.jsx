@@ -25,7 +25,7 @@ const TextBox = () => {
       <h2 className="text-box-title">Whats on your mind for today?</h2>
       <form onSubmit={handleSubmit}>
         <input
-          maxLength="50"
+          // maxLength="180"
           className="journal-text"
           type="text"
           placeholder="Enter your task"

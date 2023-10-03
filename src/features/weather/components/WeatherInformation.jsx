@@ -15,7 +15,7 @@ const WeatherInformation = ({
   longitude,
 }) => {
   const { errorMessages } = useSelector(errorSelector);
-  const convertToFahrenheight = (temperature) => {
+  const convertToFahrenheit = (temperature) => {
     return Math.round((temperature * 9) / 5 + 32);
   };
 
@@ -54,7 +54,7 @@ const WeatherInformation = ({
         </div>
         <div className="temperature-and-description">
           {country === 'United States' ? (
-            <p className="temp">{convertToFahrenheight(temp)}°F</p>
+            <p className="temp">{convertToFahrenheit(temp)}°F</p>
           ) : (
             <p className="temp">{Math.round(temp)}°C</p>
           )}
@@ -62,7 +62,7 @@ const WeatherInformation = ({
         </div>
       </div>
       {country === 'United States' ? (
-        <p>Feels like {convertToFahrenheight(feelsLike)}°F</p>
+        <p>Feels like {convertToFahrenheit(feelsLike)}°F</p>
       ) : (
         <p>Feels like {Math.round(feelsLike)}°C</p>
       )}

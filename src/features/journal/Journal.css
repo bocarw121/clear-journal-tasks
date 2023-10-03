@@ -6,6 +6,7 @@
 }
 
 .text-box {
+  min-width: 18rem;
   height: 18rem;
   padding: 10px 0 0 10px;
   width: 80%;
@@ -57,7 +58,7 @@ input::placeholder {
 /* JounalTaskList */
 
 .journal-list-container {
-  height: autofit;
+  height: fit-content;
   min-height: 19.5rem;
   padding: 10px;
   width: 80%;
@@ -70,7 +71,7 @@ input::placeholder {
 }
 
 .task {
-  width: autoFit;
+  width: fit-content;
   min-width: 18rem;
   border: 1px solid;
   height: 7rem;
@@ -114,6 +115,21 @@ input::placeholder {
 @media screen and (max-width: 618px) {
   .journal-list-container {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .journal-list-container {
+    width: 100%;
+    min-width: 18rem;
+  }
+
+  .task {
+    min-width: 16rem;
+  }
+
+  .journal-text {
+    margin-top: 2rem;
   }
 }
 

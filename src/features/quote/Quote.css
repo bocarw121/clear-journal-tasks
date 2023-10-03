@@ -46,7 +46,8 @@
 
 @media screen and (max-width: 800px) {
   .quote {
-    width: 90%;
+    width: fit-content;
+    height: fit-content;
   }
   .scrim {
     width: 100%;
