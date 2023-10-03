@@ -9,6 +9,12 @@ const bgColors = [
   'rgb(60, 71, 224)',
   'rgb(53, 151, 29)',
   'rgb(64, 70, 62)',
+  'rgb(255, 165, 0)',
+  'rgb(128, 0, 128)',
+  'rgb(0, 128, 128)',
+  'rgb(255, 69, 0)',
+  'rgb(0, 128, 0)',
+  'rgb(70, 130, 180)',
 ];
 
 const bgColorsLowOpacity = [
@@ -16,18 +22,26 @@ const bgColorsLowOpacity = [
   'rgba(60, 71, 224, 0.3)',
   'rgba(53, 151, 29, 0.3)',
   'rgba(64, 70, 62, 0.3)',
+  'rgba(255, 165, 0, 0.3)',
+  'rgba(128, 0, 128, 0.3)',
+  'rgba(0, 128, 128, 0.3)',
+  'rgba(255, 69, 0, 0.3)',
+  'rgba(0, 128, 0, 0.3)',
+  'rgba(70, 130, 180, 0.3)',
 ];
 /**
- *  Returns background color with low opacity
- *  for completed tasks and normal opacity for incomplete tasks
+ *  continuously cycles through the background colors for opacity
+ *  and non-opacity colors
  * @param  {number} index
- * @param  {boolean} opacity=false
+ * @param  {boolean} opacity
  */
 const getBgColors = (index, opacity = false) => {
   if (opacity) {
-    return bgColorsLowOpacity[index];
+    const val = bgColorsLowOpacity[index];
   } else {
-    return bgColors[index];
+    const val = bgColors[index];
+    console.log(val);
+    return val;
   }
 };
 

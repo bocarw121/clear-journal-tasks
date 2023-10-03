@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import Loading from '../../components/Loading';
-
-import './Quote.css';
 import { positiveQuotes } from '../../data/quotes';
+import './Quote.css';
 
 const Quote = () => {
   const [quote, setQuote] = useState(null);
